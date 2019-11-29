@@ -45,9 +45,10 @@ from prometheus_client import CollectorRegistry, generate_latest, Gauge, CONTENT
 from netaddr import IPRange
 
 import random
-import swift.common.utils
 
-from swift.common.ring.ring import Ring
+# Not using swift: I remove this useless requisite package
+#import swift.common.utils
+#from swift.common.ring.ring import Ring
 
 import logging
 import logging.handlers
