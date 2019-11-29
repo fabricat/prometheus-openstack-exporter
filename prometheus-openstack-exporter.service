@@ -1,13 +1,12 @@
 [Unit]
 Description=prometheus-openstack-exporter
-After=network.target
+#After=network.target
+After=network.target neutron-server.service apache2.service
 
 [Service]
 EnvironmentFile=/etc/default/prometheus-openstack-exporter
-#EnvironmentFile=/etc/prometheus-openstack-exporter/admin.novarc
-ExecStart=/bin/sh -c '. /etc/prometheus-openstack-exporter/admin.novarc; exec /opt/prometheus-openstack-exporter/prometheus-openstack-exporter $CONFIG_FILE'
+ExecStart=/bin/sh -c '. $NOVARC; exec /opt/prometheus-openstack-exporter/prometheus-openstack-exporter $CONFIG_FILE'
 KillMode=process
 
 [Install]
 WantedBy=multi-user.target
-
